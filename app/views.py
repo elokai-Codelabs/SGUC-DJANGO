@@ -1,4 +1,5 @@
 
+from smtplib import SMTPAuthenticationError
 from django.shortcuts import render, redirect
 from django.views import View
 from sgucretreat import settings
@@ -23,9 +24,13 @@ class HomeView(View):
                    'ernest6175@gmail.com', 'princesamuelpks@gmail.com']
 
         to_be_sent = EmailMessage(SUBJECT, BODY, settings.EMAIL_HOST, TO_MAIL)
-        to_be_sent.send()
-        to_be_sent.fail_silently = False
-
-        messages.success(request, 'Your message has been sent successfully!')
-        return redirect('app:home')
-        # return HttpResponse('<h1>Mail Successfully!</h1>')
+        try:
+            to_be_sent.send()
+            to_be_sent.fail_silently = False
+            messages.success(
+                request, 'Your message has been sent successfully')
+        except SMTPAuthenticationError:
+            messages.error(request, 'Your message could not be sent')
+            return redirect('app:home')
+        else:
+            return redirect('app:home')
