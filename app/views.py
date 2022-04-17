@@ -20,7 +20,7 @@ class HomeView(View):
 
         TO_MAIL = ['elokai@st.ug.edu.gh','ernest6175@gmail.com']
 
-        to_be_sent = EmailMessage(SUBJECT,{BODY}, settings.EMAIL_HOST, TO_MAIL)
+        to_be_sent = EmailMessage(SUBJECT,BODY, settings.EMAIL_HOST, TO_MAIL)
         to_be_sent.send()
         to_be_sent.fail_silently = False
         

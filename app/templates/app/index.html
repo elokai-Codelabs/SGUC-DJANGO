@@ -76,7 +76,8 @@
         </div>
       </div>
 
-      <form class="form">
+      <form class="form" action="{% url 'app:home' %}" method="POST">
+        {%csrf_token %}
         <h4>Today's Program: LOVE IS NOT ENOUGH</h4>
         <p>If you have any question, send it to us now.</p>
         <div class="form-row"></div>
