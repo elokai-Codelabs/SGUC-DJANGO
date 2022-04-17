@@ -2,6 +2,7 @@
 from smtplib import SMTPAuthenticationError
 from django.shortcuts import render, redirect
 from django.views import View
+from app.models import Question
 from sgucretreat import settings
 from django.core.mail import EmailMessage
 from django.http import HttpResponse
@@ -20,17 +21,19 @@ class HomeView(View):
         SENDER = 'A patricipant'
         BODY = request.POST.get('message')
 
-        TO_MAIL = ['elokai@st.ug.edu.gh',
-                   'ernest6175@gmail.com', 'princesamuelpks@gmail.com']
+        question = Question.objects.create(
+            question_text=BODY,
+        )
+        question.save()
+        messages.success(request, 'Your question has been sent successfully!')
+        return redirect('app:home')
 
-        to_be_sent = EmailMessage(SUBJECT, BODY, settings.EMAIL_HOST, TO_MAIL)
-        try:
-            to_be_sent.send()
-            to_be_sent.fail_silently = False
-            messages.success(
-                request, 'Your message has been sent successfully')
-        except SMTPAuthenticationError:
-            messages.error(request, 'Your message could not be sent')
-            return redirect('app:home')
-        else:
-            return redirect('app:home')
+
+class QuestionsListView(View):
+    template_name = 'app/questions.html'
+
+    def get(self, request, *args, **kwargs):
+        context = {
+            'questions': Question.objects.all().order_by('-id')
+        }
+        return render(request, self.template_name, context)
