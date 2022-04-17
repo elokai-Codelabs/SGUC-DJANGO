@@ -1,0 +1,121 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sguc |Retreat'22</title>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <nav>
+      <img
+        onclick="window.location.href='index.html'"
+        src="{% static 'images/gnaas 1.png' %}"
+        c
+        alt=""
+      />
+      <div class="navigation">
+        <ul>
+          <i id="menu-close" class="fas fa-times"></i>
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Activities</a></li>
+        </ul>
+        <img id="menu-btn" src="{% static 'images/menu.png' %}" alt="" />
+      </div>
+    </nav>
+
+    <section id="about-home">
+      <h2>SOUTH GHANA UNION CONFERENCE RETREAT'22 /</h2>
+    </section>
+
+    <section id="contact">
+      <div class="getin">
+        <h2>SOUTH GHANA UNION CONFERENCE</h2>
+        <p>Annual GNAAS Southern Ghana Union Retreat'22.</p>
+
+        <div class="getin-details">
+          <h3>Venue</h3>
+          <div>
+            <i class="far fa-home get"></i>
+            <p>Kukurantumi Multipurpose Campsite, Koforidua, Eastern Region</p>
+          </div>
+          <h3>Phone</h3>
+          <div>
+            <i class="fas fa-phone-alt get"></i>
+            <p>
+              (+233) 245 791 371 <br />
+              (+233) 556 290538 371
+            </p>
+          </div>
+          <h3>Support</h3>
+          <div>
+            <i class="fal fa-envelope-open-text get"></i>
+            <p>gnaas.sguc@gmail.com</p>
+          </div>
+          <h3>Follow Us</h3>
+          <div class="pro-link">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-linkedin-in"></i>
+          </div>
+        </div>
+      </div>
+
+      <form class="form">
+        <h4>Today's Program: LOVE IS NOT ENOUGH</h4>
+        <p>If you have any question, send it to us now.</p>
+        <div class="form-row"></div>
+        <div class="form-col"></div>
+        <div class="form-col">
+          <textarea
+            name="message"
+            id="message"
+            cols="30"
+            rows="8"
+            placeholder="Type your questions in this area like this e.g 
+             1. What is love? 
+             2. Why is love not enough? "
+          ></textarea>
+        </div>
+        <div class="form-col">
+          <button type="submit" name>Send Message</button>
+        </div>
+      </form>
+    </section>
+
+    <footer>
+      <div class="copyright">
+        <p>Copyright ©2022 All rights reserved | SGUC RETREAT'22</p>
+        <div class="pro-link">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-linkedin-in"></i>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      $("#menu-btn").click(function () {
+        $("nav .navigation ul").addClass("active");
+      });
+      $("#menu-close").click(function () {
+        $("nav .navigation ul").removeClass("active");
+      });
+    </script>
+  </body>
+</html>
