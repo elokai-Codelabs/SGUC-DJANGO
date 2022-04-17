@@ -36,6 +36,7 @@
   <section id="blog-container">
 
     <div class="blogs postpage">
+      {% if questions %}
       {% for question in questions %}
       <div class="post">
         <h3>Question {{question.id}} </h3>
@@ -45,6 +46,10 @@
       </div>
       {% endfor %}
       <a class="blue text-center" href="{% url 'app:questions' %}">Read Next ?</a>
+      {% else %}
+      <h3>No Questions Yet. Kindly Click on 'Read Next' to refresh the page. </h3>
+
+      {% endif %}
 
     </div>
 
